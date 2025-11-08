@@ -8,7 +8,12 @@
     "test": "mocha tests --recursive --timeout 5000",
     "test-single": "mocha",
     "shell": "node --experimental-repl-await ./shell.js",
-    "generate-docs": "npx jsdoc --configure .jsdoc.json --verbose"
+    "generate-docs": "npx jsdoc --configure .jsdoc.json --verbose",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:src": "eslint src",
+    "lint:tests": "eslint tests",
+    "lint:check": "eslint . --max-warnings=0"
   },
   "repository": {
     "type": "git",
@@ -34,7 +39,9 @@
     "mime": "^3.0.0",
     "node-fetch": "^2.6.9",
     "node-webpmux": "3.1.7",
-    "puppeteer": "^18.2.1"
+    "puppeteer": "^18.2.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.12",

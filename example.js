@@ -244,7 +244,7 @@ client.on('message', async msg => {
         const quotedMsg = await msg.getQuotedMessage();
         if (quotedMsg.hasMedia) {
             const attachmentData = await quotedMsg.downloadMedia();
-            client.sendMessage(msg.from, attachmentData, { caption: 'Here\'s your requested media.' });
+            client.sendMessage(msg.from, attachmentData, { caption: "Here's your requested media." });
         }
         if (quotedMsg.hasMedia && quotedMsg.type === 'audio') {
             const audio = await quotedMsg.downloadMedia();
