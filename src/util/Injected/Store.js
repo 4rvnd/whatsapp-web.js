@@ -144,10 +144,11 @@ exports.ExposeStore = () => {
         ...window.require("WAWebAddWebpMetadata"),
     };
     window.Store.GroupUtils = {
-        ...window.require("WAWebGroupCreateJob"),
-        ...window.require("WAWebGroupModifyInfoJob"),
-        ...window.require("WAWebExitGroupAction"),
-        ...window.require("WAWebContactProfilePicThumbBridge"),
+        ...window.require('WAWebGroupCreateJob'),
+        ...window.require('WAWebGroupModifyInfoJob'),
+        ...window.require('WAWebExitGroupAction'),
+        ...window.require('WAWebContactProfilePicThumbBridge'),
+        ...window.require('WAWebSetPropertyGroupAction')
     };
     window.Store.GroupParticipants = {
         ...window.require("WAWebModifyParticipantsGroupAction"),
