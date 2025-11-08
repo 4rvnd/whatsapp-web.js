@@ -87,15 +87,15 @@ class GroupChat extends Chat {
 
             const errorCodes = {
                 default: 'An unknown error occupied while adding a participant',
-                isGroupEmpty: 'AddParticipantsError: The participant can\'t be added to an empty group',
+                isGroupEmpty: "AddParticipantsError: The participant can't be added to an empty group",
                 iAmNotAdmin: 'AddParticipantsError: You have no admin rights to add a participant to a group',
                 200: 'The participant was added successfully',
                 403: 'The participant can be added by sending private invitation only',
                 404: 'The phone number is not registered on WhatsApp',
                 408: 'You cannot add this participant because they recently left the group',
                 409: 'The participant is already a group member',
-                417: 'The participant can\'t be added to the community. You can invite them privately to join this group through its invite link',
-                419: 'The participant can\'t be added because the group is full'
+                417: "The participant can't be added to the community. You can invite them privately to join this group through its invite link",
+                419: "The participant can't be added because the group is full"
             };
 
             await window.Store.GroupQueryAndUpdate({ id: groupId });

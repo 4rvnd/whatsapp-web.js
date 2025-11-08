@@ -1,7 +1,9 @@
 'use strict';
 
 const EventEmitter = require('events');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
 const moduleRaid = require('@pedroslopez/moduleraid/moduleraid');
 
 const Util = require('./util/Util');
@@ -2283,7 +2285,7 @@ class Client extends EventEmitter {
         if (!['video', 'voice'].includes(callType)) {
             throw new class CreateCallLinkError extends Error {
                 constructor(m) { super(m); }
-            }('Invalid \'callType\' parameter value is provided. Valid values are: \'voice\' | \'video\'.');
+            }("Invalid 'callType' parameter value is provided. Valid values are: 'voice' | 'video'.");
         }
 
         startTime = Math.floor(startTime.getTime() / 1000);

@@ -211,7 +211,7 @@ exports.LoadUtils = () => {
         let listOptions = {};
         if (options.list) {
             if (window.Store.Conn.platform === 'smba' || window.Store.Conn.platform === 'smbi') {
-                throw '[LT01] Whatsapp business can\'t send this yet';
+                throw "[LT01] Whatsapp business can't send this yet";
             }
             listOptions = {
                 type: 'list',
@@ -527,18 +527,18 @@ exports.LoadUtils = () => {
             }
         } else {
             chat = await window.Store.FindOrCreateChat.findOrCreateLatestChat(chatWid)
-            .then(chat => chat.chat)
-            .catch(async err => {
-                let query = window.require("WAWebContactSyncUtils").constructUsyncDeltaQuery([{
-                    type: "add",
-                    phoneNumber: chatWid.user
-                }]);
-                let result =  await query.execute();
-                if (result && Array.isArray(result.list) && result.list.length > 0 && result.list[0] && result.list[0].lid) {
-                    chatLid = window.Store.WidFactory.createWid(result?.list[0]?.lid)
-                    return await window.Store?.FindOrCreateChat?.findOrCreateLatestChat(chatLid)?.then(chat => chat.chat)?.catch(async err => {})
-                }
-            })
+                .then(chat => chat.chat)
+                .catch(async () => {
+                    let query = window.require('WAWebContactSyncUtils').constructUsyncDeltaQuery([{
+                        type: 'add',
+                        phoneNumber: chatWid.user
+                    }]);
+                    let result =  await query.execute();
+                    if (result && Array.isArray(result.list) && result.list.length > 0 && result.list[0] && result.list[0].lid) {
+                        chatLid = window.Store.WidFactory.createWid(result?.list[0]?.lid);
+                        return await window.Store?.FindOrCreateChat?.findOrCreateLatestChat(chatLid)?.then(chat => chat.chat)?.catch(async () => {});
+                    }
+                });
         }
 
         return getAsModel && chat
